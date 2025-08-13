@@ -29,7 +29,7 @@ export default function Header() {
     <header className="px-4">
       <div className="header-content flex justify-between place-items-center max-w-7xl mx-auto">
         <Link href={"/"}>
-          <Image src={"/images/me_elvehavn.jpg"} alt='Logo' width={90} height={90} className='rounded-full w-8 h-8 md:w-10 md:h-10 object-cover my-2'></Image>
+          <img src={"/images/me_elvehavn.jpg"} alt='Logo' width={90} height={90} className='rounded-full w-8 h-8 md:w-10 md:h-10 object-cover my-2' />
         </Link>
         <FaBars id="menu-button" className="sm:hidden cursor-pointer fixed right-6 top-4 text-xl" onClick={showMenu} />
         {isMenuOpen ? (
