@@ -1,5 +1,3 @@
-import Link from "next/link";
-import { FaHtml5, FaCss3, FaJs, FaReact } from "react-icons/fa";
 
 function About() {
    return (
