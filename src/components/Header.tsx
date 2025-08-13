@@ -5,7 +5,6 @@ import { useState, useRef } from "react";
 import { FaBars } from "react-icons/fa";
 import { useOutsideClick } from "../hooks/useOutsideClick";
 import Link from "next/link";
-import Image from "next/image";
 
 export default function Header() {
   const path = usePathname();
