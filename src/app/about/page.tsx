@@ -34,7 +34,7 @@ function About() {
             <h2 className="text-xl py-2">Other soloist performances include:</h2>
             <ul>
                 <li><span className="italic">Weber: Clarinet Concerto No.1</span> with Sør-Trøndelag Orkesterforening (1998)</li>
-                <li><span className="italic">Mozart : Clarinet Concerto</span> on basset-clarinet conducted by Rune Halvorsen on his 40th birthday (2009)</li>
+                <li><span className="italic">Mozart : Clarinet Concerto</span> on basset-clarinet conducted by Rune Halvorsen on his 40th birthday (2006)</li>
                 <li><span className="italic">Weber : Concertino</span> with Sør-Trøndelag Orkesterforening (2013)</li>
             </ul>
         </div>
