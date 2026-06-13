@@ -35,27 +35,27 @@ export default function Header() {
           <div ref={menuRef}>
             <nav className="dropdown absolute top-12 right-4 z-50 bg-[var(--white)] border border-[var(--light-grey)] rounded-md p-4">
               <ul className="flex-col">
-                <li className="p-1">
+                <li className="py-1">
                   <Link href="/" className={path === "/" ? "active" : ""} onClick={closeMenu}>
                     Home
                   </Link>
                 </li>
-                <li className="p-1">
+                <li className="py-1">
                   <Link href="/projects" className={path === "/projects" ? "active" : ""} onClick={closeMenu}>
                     Projects
                   </Link>
                 </li>
-                <li className="p-1">
+                <li className="py-1">
                   <Link href="/about" className={path === "/about" ? "active" : ""} onClick={closeMenu}>
                     About
                   </Link>
                 </li>
-                <li className="p-1">
+                <li className="py-1">
                   <Link href="/contact" className={path === "/contact" ? "active" : ""} onClick={closeMenu}>
                     Contact
                   </Link>
                 </li>
-                <li className="p-1">
+                <li className="py-1">
                   <Link href="/blog" className={path === "/blog" ? "active" : ""} onClick={closeMenu}>
                     Blog
                   </Link>
@@ -66,27 +66,27 @@ export default function Header() {
         ) : (
           <nav className="visible flex justify-center place-items-center">
             <ul className="sm:flex hidden gap-2 justify-center mt-12 mb-4 mr-2 sm:mt-1 align-center">
-              <li className="py-1">
+              <li className="p-1">
                 <Link href="/" className={path === "/" ? "active" : ""}>
                   Home
                 </Link>
               </li>
-              <li className="py-1">
+              <li className="p-1">
                 <Link href="/projects" className={path === "/projects" ? "active" : ""}>
                   Projects
                 </Link>
               </li>
-              <li className="py-1">
+              <li className="p-1">
                 <Link href="/about" className={path === "/about" ? "active" : ""}>
                   About
                 </Link>
               </li>
-              <li className="py-1">
+              <li className="p-1">
                 <Link href="/contact" className={path === "/contact" ? "active" : ""}>
                   Contact
                 </Link>
               </li>
-              <li className="py-1">
+              <li className="p-1">
                 <Link href="/blog" className={path === "/blog" ? "active" : ""}>
                   Blog
                 </Link>
