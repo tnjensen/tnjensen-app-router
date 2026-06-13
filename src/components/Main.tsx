@@ -5,7 +5,7 @@ export function Main() {
       <main className="p-2">
         <h1 className="text-3xl text-center py-4">Hi, I&apos;m Thomas</h1>
         {/* <div className="hero flex justify-center"> */}
-          <img src={"/images/me_solsiden.jpg"} alt="Me in Elvehavn, Trondheim" className="flex justify-self-center rounded-full" width={250} height={250} />
+          <img src={"/images/me_solsiden.jpg"} alt="Me in Elvehavn, Trondheim" className="mx-auto rounded-full" width={250} height={250} />
         {/* </div> */}
         <h2 className="text-2xl text-center py-6">Clarinettist and <span className="bg-gray-700 ml-1 px-3 py-1 text-white rounded-full italic">web-developer</span></h2>
         <section className="flex-column place-items-center my-10 w-100 md:w-[680px] lg:w-[980px] mx-auto">
