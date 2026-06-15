@@ -61,8 +61,10 @@ iframe {
   max-width: 100%;
   margin: auto;
   margin-top: 20px;
+  position: relative;
 }
 .yt-icon-shape{
+  position: absolute;
     top: calc(50% - (0.5 * var(--hd-play-button-size)));
 }
 
