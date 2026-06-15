@@ -60,12 +60,8 @@ iframe {
   display: block;
   width: 100%;
   margin: 0 auto;
+  inset: 0;
   padding-top: 20px;
-}
-.ytPlayerControlsContainerRendered {
-    position: fixed;
-    inset: 0;
-    padding-bottom: 0;
 }
 .article {
   h1 {
