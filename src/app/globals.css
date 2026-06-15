@@ -49,11 +49,11 @@ input {
 }
 
 .bg-button {
-  background-color: var(--dark-gray)
+  background-color: var(--blue)
 }
 
 .bg-button:hover {
-  background-color: var(--light-gray)
+  background-color: var(--light-blue)
 }
 
 iframe {
