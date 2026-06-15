@@ -59,7 +59,6 @@ input {
 iframe {
   display: block;
   width: 100%;
-  height: auto;
   margin: 0 auto;
   padding-top: 20px;
 }
