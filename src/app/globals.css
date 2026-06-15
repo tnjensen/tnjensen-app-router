@@ -13,7 +13,6 @@
   --black: #222;
   --white: #fffefe;
   --main-bg: #fcfff3;
-  --hd-play-button-size: 75px;
 }
 
 body {
@@ -61,11 +60,9 @@ iframe {
   max-width: 100%;
   margin: auto;
   margin-top: 20px;
-  position: relative;
 }
 .yt-icon-shape{
-    position: absolute;
-    top: calc(50% - (0.5 * var(--hd-play-button-size)));
+    place-items: center;
 }
 
 .article {
