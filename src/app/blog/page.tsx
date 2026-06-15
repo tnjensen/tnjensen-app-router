@@ -16,7 +16,6 @@ export default async function Projects(){
                 <h2 dangerouslySetInnerHTML={{__html: item.title.rendered}} className="text-xl mb-2"></h2>
                 {item._embedded['wp:featuredmedia'] && <img src={item._embedded['wp:featuredmedia'][0].source_url} alt={item._embedded['wp:featuredmedia'][0].alt_text} className="mb-3" /> }
                 <span dangerouslySetInnerHTML={{__html: item.content.rendered}}></span>
-                <hr className="mt-2"/>
                 </div>
             ))}
             </Suspense>
