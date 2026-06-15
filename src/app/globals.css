@@ -64,7 +64,7 @@ iframe {
   position: relative;
 }
 .yt-icon-shape{
-  position: absolute;
+    position: absolute;
     top: calc(50% - (0.5 * var(--hd-play-button-size)));
 }
 
