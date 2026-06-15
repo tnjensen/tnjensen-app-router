@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 
-export default function Error({ error }) {
+export default function Error({ error, reset }) {
   useEffect(() => {
     if (
       error.message?.includes('Loading chunk') ||
@@ -14,9 +14,9 @@ export default function Error({ error }) {
   }, [error]);
 
   return (
-    {/* <div>
+    <div>
       <h2>Something went wrong</h2>
       <button onClick={() => reset()}>Try again</button>
-    </div> */}
+    </div>
   );
 }
