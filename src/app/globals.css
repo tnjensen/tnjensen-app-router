@@ -63,8 +63,9 @@ input {
 } */
  iframe[src*="youtube.com"] {
   display: block;
-  margin-left: auto !important;
-  margin-right: auto !important;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
 }
 .article {
   h1 {
