@@ -12,9 +12,9 @@ export default async function Projects() {
             <h1 className="py-4 text-center col-span-12">Blog</h1>
             <Suspense fallback={<Loading />}>
                 {data?.map((item: Post) => (
-                    <div className="flex flex-col bg-background rounded max-w-xs px-4 py-3 m-2 col-span-12 mx-auto text-center md:col-span-6 lg:col-span-4" key={item.id}>
+                    <div className="flex flex-col bg-background rounded max-w-xs px-4 py-3 m-2 col-span-12 mx-auto md:col-span-6 lg:col-span-4" key={item.id}>
                         <h2 dangerouslySetInnerHTML={{ __html: item.title.rendered }} className="text-xl mb-2"></h2>
-                        {item._embedded['wp:featuredmedia'] && <img src={item._embedded['wp:featuredmedia'][0].source_url} alt={item._embedded['wp:featuredmedia'][0].alt_text} className="mb-3" />}
+                        {item._embedded['wp:featuredmedia'] && <img src={item._embedded['wp:featuredmedia'][0].source_url} alt={item._embedded['wp:featuredmedia'][0].alt_text} className="mb-3 text-center" />}
                         <span dangerouslySetInnerHTML={{ __html: item.content.rendered }}></span>
                     </div>
                 ))}
