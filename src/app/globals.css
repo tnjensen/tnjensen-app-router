@@ -61,6 +61,9 @@ iframe {
   margin: auto;
   margin-top: 20px;
 }
+.yt-icon-shape {
+    top: calc(50% - (0.5 * var(--hd-play-button-size)));
+}
 
 .article {
   h1 {
