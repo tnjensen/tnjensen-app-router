@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 
-export default function Error({ error, reset }) {
+export default function Error({ error }) {
   useEffect(() => {
     if (
       error.message?.includes('Loading chunk') ||
