@@ -55,17 +55,11 @@ input {
 .bg-button:hover {
   background-color: var(--light-gray)
 }
-/* iframe {
+iframe {
   display: block;
   width: 100%;
   margin: 0 auto;
   padding-top: 20px;
-} */
- iframe[src*="youtube.com"] {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
 }
 .article {
   h1 {
