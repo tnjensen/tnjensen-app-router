@@ -61,10 +61,48 @@ iframe {
   margin: auto;
   margin-top: 20px;
 }
-.yt-icon-shape{
-    place-items: center;
+.ytmCuedOverlayPlayButton {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -36px;
+    margin-top: -36px;
+    width: 72px;
+    height: 72px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
 }
-
+.ytSpecIconShapeHost {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+.ytmVideoCoverHost {
+    display: block;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    -webkit-transition: -webkit-transform .7s;
+    transition: -webkit-transform .7s;
+    transition: transform .7s;
+    transition: transform .7s, -webkit-transform .7s;
+    -webkit-transition-property: opacity;
+    transition-property: opacity;
+}
 .article {
   h1 {
     @apply text-2xl font-bold text-slate-900 my-6
