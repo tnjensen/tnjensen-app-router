@@ -61,7 +61,7 @@ iframe {
   margin: auto;
   margin-top: 20px;
 }
-.yt-icon-shape {
+.play-button {
     top: calc(50% - (0.5 * var(--hd-play-button-size)));
 }
 
