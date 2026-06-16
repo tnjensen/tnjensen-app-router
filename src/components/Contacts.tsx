@@ -27,6 +27,7 @@ const Contacts: FC = () => {
               Name
             </label>
             <input
+              id='name'
               type='text'
               placeholder='Your name'
               className='w-full rounded-md border border-gray-300 py-2 px-2 mb-1 text-base font-medium text-gray-700 outline-none focus:border-purple-500 focus:shadow-md'
@@ -41,6 +42,7 @@ const Contacts: FC = () => {
               Email
             </label>
             <input
+              id='email'
               type='email'
               placeholder='example@domain.com'
               className='w-full rounded-md border border-gray-300 py-2 px-2 mb-1 text-base font-medium text-gray-700 outline-none focus:border-purple-500 focus:shadow-md'
@@ -55,6 +57,7 @@ const Contacts: FC = () => {
               Message
             </label>
             <textarea
+              id='message'
               rows={6}
               placeholder='Your message'
               className='w-full rounded-md border border-gray-300 py-2 px-2 text-base font-medium text-gray-700 outline-none focus:border-purple-500 focus:shadow-md'
