@@ -34,7 +34,7 @@ const Contacts: FC = () => {
               aria-invalid={errors.name ? "true" : "false"}
             />
             {errors.name?.type === "required" && (
-              <p role='alert'>Name is required</p>
+              <p role='alert' className='text-red'>Name is required</p>
             )}
           </div>
           <div className='mb-2'>
@@ -52,7 +52,7 @@ const Contacts: FC = () => {
               aria-invalid={errors.email ? "true" : "false"}
             />
             {errors.email?.type === "required" && (
-              <p role='alert'>Email is required</p>
+              <p role='alert' className='text-red'>Email is required</p>
             )}
           </div>
           <div className='mb-4'>
@@ -70,7 +70,7 @@ const Contacts: FC = () => {
               aria-invalid={errors.message ? "true" : "false"}
             ></textarea>
             {errors.message?.type === "required" && (
-              <p role='alert'>Message is required</p>
+              <p role='alert' className='text-red'>Message is required</p>
             )}
           </div>
           <div>
