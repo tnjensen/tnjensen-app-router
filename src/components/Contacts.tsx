@@ -17,6 +17,7 @@ const Contacts: FC = () => {
 
     function onSubmit(data: FormData){
         sendMail(data)
+        setResponseMessage(data.message)
     }
     return(
         <form onSubmit={handleSubmit(onSubmit)}>
