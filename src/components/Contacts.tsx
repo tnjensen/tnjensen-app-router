@@ -87,7 +87,7 @@ const Contacts: FC = () => {
         >
           Send
         </Button>
-        {responseMessage && <p role='alert' className='text-blue-500'>{responseMessage}</p>}
+        {responseMessage && <p role='alert' className='mt-1 text-blue-500'>{responseMessage}</p>}
       </div>
     </form>
   )
