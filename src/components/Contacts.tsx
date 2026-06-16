@@ -86,7 +86,7 @@ const Contacts: FC = () => {
             >
               Send
             </Button>
-            {NextResponse && (
+            {!errors && (
               <p role='alert' className='text-blue-500'>Email sent</p>
             )}
           </div>
