@@ -4,6 +4,7 @@ import {FC, useState} from 'react'
 import {useForm} from 'react-hook-form'
 import {sendMail} from '@/utils/send-email'
 import { Button } from './Button'
+import { NextResponse } from 'next/server'
 
 export type FormData = {
     name: string,
@@ -13,11 +14,11 @@ export type FormData = {
 
 const Contacts: FC = () => {
     const {register, formState:{errors}, handleSubmit} = useForm<FormData>()
-    const [responseMessage, setResponseMessage] = useState("")
+    const [responseMessage, setResponseMessage] = useState(NextResponse)
 
     function onSubmit(data: FormData){
         sendMail(data)
-        setResponseMessage(data.message)
+        setResponseMessage(NextResponse)
     }
     return(
         <form onSubmit={handleSubmit(onSubmit)}>
