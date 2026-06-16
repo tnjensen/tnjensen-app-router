@@ -1,6 +1,6 @@
 "use client"
 
-import {FC} from 'react'
+import {FC, useState} from 'react'
 import {useForm} from 'react-hook-form'
 import {sendMail} from '@/utils/send-email'
 import { Button } from './Button'
@@ -13,6 +13,7 @@ export type FormData = {
 
 const Contacts: FC = () => {
     const {register, formState:{errors}, handleSubmit} = useForm<FormData>()
+    const [responseMessage, setResponseMessage] = useState("")
 
     function onSubmit(data: FormData){
         sendMail(data)
@@ -85,6 +86,7 @@ const Contacts: FC = () => {
             >
               Send
             </Button>
+            {responseMessage && <p role='alert' className='text-blue-500'>{responseMessage}</p>}
           </div>
         </form>
     )
