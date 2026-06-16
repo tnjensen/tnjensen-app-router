@@ -12,7 +12,7 @@ export type FormData = {
 }
 
 const Contacts: FC = () => {
-    const {register, handleSubmit} = useForm<FormData>()
+    const {register, formState:{errors}, handleSubmit} = useForm<FormData>()
 
     function onSubmit(data: FormData){
         sendMail(data)
@@ -31,7 +31,11 @@ const Contacts: FC = () => {
               placeholder='Your name'
               className='w-full rounded-md border border-gray-300 py-2 px-2 mb-1 text-base font-medium text-gray-700 outline-none focus:border-purple-500 focus:shadow-md'
               {...register('name', { required: true })}
+              aria-invalid={errors.name ? "true" : "false"}
             />
+            {errors.name?.type === "required" && (
+              <p role='alert'>Name is required</p>
+            )}
           </div>
           <div className='mb-2'>
             <label
@@ -45,7 +49,11 @@ const Contacts: FC = () => {
               placeholder='example@domain.com'
               className='w-full rounded-md border border-gray-300 py-2 px-2 mb-1 text-base font-medium text-gray-700 outline-none focus:border-purple-500 focus:shadow-md'
               {...register('email', { required: true })}
+              aria-invalid={errors.email ? "true" : "false"}
             />
+            {errors.email?.type === "required" && (
+              <p role='alert'>Email is required</p>
+            )}
           </div>
           <div className='mb-4'>
             <label
@@ -59,7 +67,11 @@ const Contacts: FC = () => {
               placeholder='Your message'
               className='w-full rounded-md border border-gray-300 py-2 px-2 text-base font-medium text-gray-700 outline-none focus:border-purple-500 focus:shadow-md'
               {...register('message', { required: true })}
+              aria-invalid={errors.message ? "true" : "false"}
             ></textarea>
+            {errors.message?.type === "required" && (
+              <p role='alert'>Message is required</p>
+            )}
           </div>
           <div>
             {/* <button className='hover:shadow-form rounded-md bg-blue-600 py-2 px-8 font-semibold uppercase text-white outline-none hover:bg-blue-500'>
