@@ -11,6 +11,7 @@ export function sendMail(data: FormData) {
        .then((res) => res.json())
        .then((response) => {
         console.log(response.message)
+        return response.message
        })
    }
    catch(err){

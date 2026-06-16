@@ -85,6 +85,9 @@ const Contacts: FC = () => {
             >
               Send
             </Button>
+            {!errors && (
+              <p role='alert' className='text-blue-500'>Email sent</p>
+            )}
           </div>
         </form>
     )
