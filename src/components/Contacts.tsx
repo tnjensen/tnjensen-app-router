@@ -86,10 +86,6 @@ const Contacts: FC = () => {
             >
               Send
             </Button>
-            {NextResponse? 
-              <p role='alert' className='text-blue-500'>Email sent</p>
-              : ""
-            }
           </div>
         </form>
     )
