@@ -4,6 +4,7 @@ import {FC} from 'react'
 import {useForm} from 'react-hook-form'
 import {sendMail} from '@/utils/send-email'
 import { Button } from './Button'
+import { NextResponse } from 'next/server'
 
 export type FormData = {
     name: string,
@@ -85,6 +86,9 @@ const Contacts: FC = () => {
             >
               Send
             </Button>
+            {NextResponse && (
+              <p role='alert' className='text-blue-500'>Email sent</p>
+            )}
           </div>
         </form>
     )
