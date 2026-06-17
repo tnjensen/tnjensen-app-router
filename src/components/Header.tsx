@@ -66,27 +66,27 @@ export default function Header() {
         ) : (
           <nav className="visible flex justify-center place-items-center">
             <ul className="sm:flex hidden gap-2 justify-center mt-12 mb-4 mr-2 sm:mt-1 align-center">
-              <li className="p-1">
+              <li className="py-1">
                 <Link href="/" className={path === "/" ? "active" : ""}>
                   Home
                 </Link>
               </li>
-              <li className="p-1">
+              <li className="py-1">
                 <Link href="/projects" className={path === "/projects" ? "active" : ""}>
                   Projects
                 </Link>
               </li>
-              <li className="p-1">
+              <li className="py-1">
                 <Link href="/about" className={path === "/about" ? "active" : ""}>
                   About
                 </Link>
               </li>
-              <li className="p-1">
+              <li className="py-1">
                 <Link href="/contact" className={path === "/contact" ? "active" : ""}>
                   Contact
                 </Link>
               </li>
-              <li className="p-1">
+              <li className="py-1">
                 <Link href="/blog" className={path === "/blog" ? "active" : ""}>
                   Blog
                 </Link>
