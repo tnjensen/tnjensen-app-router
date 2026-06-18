@@ -1,3 +1,4 @@
+import ContactForm from "@/components/ContactForm";
 import Contacts from "@/components/Contacts";
 import { FaEnvelope } from "react-icons/fa";
 import { FaPerson } from "react-icons/fa6";
@@ -37,7 +38,8 @@ export default function Contact(){
                         <input type="submit" name="submit" id="submit" value="Send" />
                     </form> */}
                     <div className="py-1 rounded mt-1">
-                        <Contacts />
+                        {/* <Contacts /> */}
+                        <ContactForm />
                     </div>
                 </div>
             </div>
