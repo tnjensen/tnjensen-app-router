@@ -21,7 +21,7 @@ const transporter = nodemailer.createTransport({
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASS,
     },
-    /* family: 4, */
+    family: 4,
 } as any);
 
 export async function submitContactForm(prevState: any, formData: FormData) {

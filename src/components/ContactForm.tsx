@@ -21,7 +21,7 @@ export default function ContactForm() {
   };
 
   return (
-    <div className="max-w-md mx-auto p-6 bg-white rounded-xl shadow-md border border-gray-100">
+    <div className="py-2 rounded-xl">
       {/* <h2 className="text-2xl font-bold text-gray-900 mb-6">Contact Us</h2> */}
 
       <form action={handleFormSubmit} className="space-y-4">
@@ -69,6 +69,7 @@ export default function ContactForm() {
           <Turnstile
             ref={turnstileRef}
             siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITEKEY!}
+            options={{theme:'light'}}
           />
         </div>
 
@@ -77,7 +78,7 @@ export default function ContactForm() {
           disabled={isPending}
           className="w-full bg-blue-600 text-white font-medium py-2 px-4 rounded-md shadow-sm hover:bg-blue-700 focus:outline-none disabled:opacity-50 transition-opacity"
         >
-          {isPending ? 'Sending...' : 'Send'}
+          {isPending ? 'Sending...' : 'Send Message'}
         </button>
 
         {/* Global Success / Error Messages */}
