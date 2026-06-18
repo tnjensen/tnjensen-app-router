@@ -25,7 +25,7 @@ const transporter = nodemailer.createTransport({
     family: 4,
 } as SMTPTransport.Options);
 
-export async function submitContactForm(formData: FormData) {
+export async function submitContactForm(prevState: any, formData: FormData) {
     // 1. Valider skjemadata med Zod
     const validatedFields = contactSchema.safeParse({
         name: formData.get('name'),
