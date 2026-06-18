@@ -22,7 +22,7 @@ const transporter = nodemailer.createTransport({
         pass: process.env.SMTP_PASS,
     },
     family: 4,
-} as any);
+});
 
 export async function submitContactForm(prevState: any, formData: FormData) {
     // 1. Valider skjemadata med Zod
@@ -102,6 +102,5 @@ export async function submitContactForm(prevState: any, formData: FormData) {
             message: 'Kunne ikke sende e-posten akkurat nå. Prøv igjen senere.',
         };
     }
-
 }
 
