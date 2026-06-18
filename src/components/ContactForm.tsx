@@ -2,7 +2,7 @@
 
 import { useActionState, useRef } from 'react';
 import { Turnstile, TurnstileInstance } from '@marsidev/react-turnstile';
-import { submitContactForm } from '@/app/actions/contact';
+import { submitContactForm } from '@/app/api/contact';
 
 const initialState = {
   success: false,

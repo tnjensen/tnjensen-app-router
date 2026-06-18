@@ -3,6 +3,7 @@
 
 import { z } from 'zod';
 import nodemailer from 'nodemailer';
+import type SMTPTransport from 'nodemailer/lib/smtp-transport';
 
 // Definerer validering av skjemaet
 const contactSchema = z.object({
@@ -15,16 +16,16 @@ const contactSchema = z.object({
 // Oppretter en gjenbrukbar Nodemailer transportør
 const transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST,
-    port: parseInt(process.env.SMTP_PORT || '465'),
-    secure: true, // true for port 465, false for andre porter som 587
+    port: 465,
+    secure: true,
     auth: {
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASS,
     },
     family: 4,
-});
+} as SMTPTransport.Options);
 
-export async function submitContactForm(prevState: any, formData: FormData) {
+export async function submitContactForm(formData: FormData) {
     // 1. Valider skjemadata med Zod
     const validatedFields = contactSchema.safeParse({
         name: formData.get('name'),
