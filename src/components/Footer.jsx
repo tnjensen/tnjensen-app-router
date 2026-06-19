@@ -9,7 +9,7 @@ export function Footer(){
         date =  ` 2024`;
     }
     return(
-        <footer className="bg-foreground text-white h-auto p-2 bottom-0 z-20">
+        <footer className="bg-foreground text-white text-sm h-auto p-2 bottom-0 z-20">
             <div className="flex h-8 items-center justify-around w-full">
                 <p>Copyright &copy; {date} | Thomas N. Jensen</p>
                 <div className="flex items-center gap-2">
@@ -18,7 +18,7 @@ export function Footer(){
                     <Link href={"https://www.facebook.com/profile.php?id=100058563252363"}><FaFacebook /></Link>
                 </div>
             </div>
-            <div className='text-center'>Sidene er utviklet med NextJS</div>
+            <div className='text-center text-xm'>Sidene er utviklet med NextJS</div>
     </footer>
     )
 }
