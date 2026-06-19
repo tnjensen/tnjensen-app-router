@@ -45,7 +45,7 @@ export async function submitContactForm(prevState: any, formData: FormData) {
 
     // 2. Verifiser Turnstile-tokenet hos Cloudflare
     try {
-        const verifyResponse = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+        const verifyResponse = await fetch('https://cloudflare.com', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: new URLSearchParams({
