@@ -18,7 +18,7 @@ export function Footer(){
                     <Link href={"https://www.facebook.com/profile.php?id=100058563252363"}><FaFacebook /></Link>
                 </div>
             </div>
-            <div className='text-center text-xm'>Sidene er utviklet med NextJS</div>
+            <div className='text-center text-xm'>These pages are developed with NextJS</div>
     </footer>
     )
 }
