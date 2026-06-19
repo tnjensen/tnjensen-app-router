@@ -9,9 +9,9 @@ export function Footer(){
         date =  ` 2024`;
     }
     return(
-        <footer className="bg-foreground text-white h-12 p-2 bottom-0 z-20">
+        <footer className="bg-foreground text-white h-14 p-2 bottom-0 z-20">
             <div className="flex h-8 items-center justify-around w-full">
-                <p>Copyright &copy; {date} - Thomas N. Jensen</p>
+                <p>Copyright &copy; {date} | Thomas N. Jensen</p>
                 <div className="flex items-center gap-2">
                     <Link href={"https://www.linkedin.com/in/tnjensen09/"}><FaLinkedin /></Link>
                     <Link href={"https://www.instagram.com/tnjensen09/"}><FaInstagram /></Link>
