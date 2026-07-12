@@ -20,7 +20,7 @@ jobs:
           script: |
             # 1. Gå til mappen eller klon det rene repositoriet hvis det mangler
             if [ ! -d "/var/www/tnjensen.com" ] || [ -z "$(ls -A /var/www/tnjensen.com 2>/dev/null)" ]; then
-              git clone https://github.com/tnjensen/tnjensen-app-router /var/www/tnjensen.com
+              git clone https://github.com/tnjensen/tnjensen-app-router.git
               cd /var/www/tnjensen.com
             else
               cd /var/www/tnjensen.com
