@@ -20,8 +20,6 @@ jobs:
           script: |
             # 1. Gå til riktig mappe eller klon på nytt hvis den er tom
             if [ ! -d "/var/www/tnjensen.com" ] || [ -z "$(ls -A /var/www/tnjensen.com)" ]; then
-              sudo mkdir -p /var/www/tnjensen.com
-              sudo chown -R $USER:$USER /var/www/tnjensen.com
               git clone https://github.com /var/www/tnjensen.com
               cd /var/www/tnjensen.com
             else
