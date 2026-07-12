@@ -1,31 +1,55 @@
-name: Deploy to PRO ISP VPS
+name: Deploy Next.js to PRO ISP VPS
 
 on:
   push:
     branches:
-      - main  # Trigger distribusjon hver gang du pusher til main-branchen
+      - main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Henter koden fra GitHub-repositoriet
+      # 1. Henter koden fra GitHub
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 2. Konfigurerer SSH-nøkkelen på GitHub-runneren
+      # 2. Setter opp SSH-nøkkel for rsync-overføringen
       - name: Install SSH Key
         uses: shimataro/ssh-key-action@v2
         with:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           known_hosts: ${{ secrets.KNOWN_HOSTS }}
 
-      # 3. Synkroniserer filene til VPS-en med rsync
+      # 3. Synkroniserer kildekoden til serveren (ekskluderer unødvendige filer)
       - name: Deploy files via rsync
         run: |
           rsync -avzr --delete \
             --exclude='.git*' \
             --exclude='.github*' \
             --exclude='node_modules' \
-            ./ ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }}:/var/www/tnjensen.com
+            --exclude='.next' \
+            ./ ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }}:/var/www/://tnjensen.com
+
+      # 4. Logger inn på VPS via SSH for å bygge og restarte med PM2
+      - name: SSH Remote Commands for PM2
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 22
+          script: |
+            cd /var/www/tnjensen.com
+            
+            # Last inn full Node.js-miljø (nødvendig for at kommandoer skal finnes over SSH)
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+            
+            # Installer pakker og bygg appen på serveren
+            npm install
+            npm run build
+            
+            # Last inn Next.js på nytt uten nedetid via PM2
+            pm2 reload tnjensen-app || pm2 start npm --name "tnjensen-app" -- start
+            pm2 save
