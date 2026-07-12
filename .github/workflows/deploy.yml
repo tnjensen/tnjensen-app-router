@@ -18,8 +18,8 @@ jobs:
       - name: Install SSH Key
         uses: shimataro/ssh-key-action@v2
         with:
-          key: ${{ secrets.VPS_SSH_PRIVATE_KEY }}
-          known_hosts: ${{ secrets.VPS_KNOWN_HOSTS }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          known_hosts: ${{ secrets.KNOWN_HOSTS }}
 
       # 3. Synkroniserer filene til VPS-en med rsync
       - name: Deploy files via rsync
@@ -28,4 +28,4 @@ jobs:
             --exclude='.git*' \
             --exclude='.github*' \
             --exclude='node_modules' \
-            ./ ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:/var/www/://tnjensen.com
+            ./ ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }}:/var/www/://tnjensen.com
