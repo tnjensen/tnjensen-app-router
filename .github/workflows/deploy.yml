@@ -19,13 +19,13 @@ jobs:
           port: 22
           script: |
             # 1. Opprett mappen hvis den ikke eksisterer, eller hent nyeste kode fra tnjensen-app-router
-            if [ ! -d "/var/www/min-nextjs-app" ]; then
-              sudo mkdir -p /var/www/min-nextjs-app
-              sudo chown -R $USER:$USER /var/www/min-nextjs-app
+            if [ ! -d "/var/www/tnjensen-app-router" ]; then
+              sudo mkdir -p /var/www/tnjensen-app-router
+              sudo chown -R tnjensen:tnjensen /var/www/tnjensen-app-router
               git clone https://github.com{{ github.repository }}.git /var/www/min-nextjs-app
-              cd /var/www/min-nextjs-app
+              cd /var/www/tnjensen-app-router
             else
-              cd /var/www/min-nextjs-app
+              cd /var/www/tnjensen-app-router
               git pull origin main
             fi
 
