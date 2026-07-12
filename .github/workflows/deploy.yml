@@ -1,43 +1,31 @@
-name: Deploy Next.js to VPS
+name: Deploy to PRO ISP VPS
 
 on:
   push:
     branches:
-      - main
+      - main  # Trigger distribusjon hver gang du pusher til main-branchen
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Deploy via SSH
-        uses: appleboy/ssh-action@v1.0.3
+      # 1. Henter koden fra GitHub-repositoriet
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. Konfigurerer SSH-nøkkelen på GitHub-runneren
+      - name: Install SSH Key
+        uses: shimataro/ssh-key-action@v2
         with:
-          host: ${{ secrets.SERVER_IP }}
-          username: ${{ secrets.SERVER_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          port: 22
-          script: |
-            # 1. Gå til mappen eller klon det rene repositoriet hvis det mangler
-            if [ ! -d "/var/www/tnjensen.com" ] || [ -z "$(ls -A /var/www/tnjensen.com 2>/dev/null)" ]; then
-              git clone https://github.com/tnjensen/tnjensen-app-router.git
-              cd /var/www/tnjensen.com
-            else
-              cd /var/www/tnjensen.com
-              git pull origin main
-            fi
+          key: ${{ secrets.VPS_SSH_PRIVATE_KEY }}
+          known_hosts: ${{ secrets.VPS_KNOWN_HOSTS }}
 
-            # 2. Installer avhengigheter og bygg standalone-versjonen
-            npm install
-            npm run build
-
-            # 3. Kopier statiske filer til standalone-strukturen
-            cp -r /var/www/tnjensen.com /var/www/tnjensen.com
-            cp -r /var/www/tnjensen.com /var/www/tnjensen.com
-
-            # 4. Start eller start på nytt i PM2
-            pm2 delete nextjs-standalone || true
-            
-            cd /var/www/tnjensen.com
-            PORT=3000 pm2 start server.js --name "nextjs-standalone"
-            pm2 save
+      # 3. Synkroniserer filene til VPS-en med rsync
+      - name: Deploy files via rsync
+        run: |
+          rsync -avzr --delete \
+            --exclude='.git*' \
+            --exclude='.github*' \
+            --exclude='node_modules' \
+            ./ ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:/var/www/://tnjensen.com
