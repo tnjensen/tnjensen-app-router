@@ -37,11 +37,12 @@ jobs:
             cp -r .next/static .next/standalone/.next/
             cp -r public .next/standalone/
 
-            # 4. Start eller start på nytt i PM2
+             # 4. Start eller start på nytt i PM2 fra riktig absolutt sti
             pm2 describe nextjs-standalone > /dev/null
             if [ $? -eq 0 ]; then
               PORT=3000 pm2 restart nextjs-standalone --update-env
             else
-              PORT=3000 pm2 start .next/standalone/server.js --name "nextjs-standalone"
+              cd /var/www/://tnjensen.com
+              PORT=3000 pm2 start server.js --name "nextjs-standalone"
             fi
             pm2 save
