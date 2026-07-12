@@ -7,7 +7,7 @@ export default async function Projects(){
 
     const response = await fetch('https://noroff.tnjensen.com/portfolio/wp-json/wp/v2/posts?categories=3&_embed&filter[orderby]=date&order=asc')
     const data = await response.json()
-    
+    console.log(data)
    
     return(
         <div className="grid grid-cols-12 mx-auto px-10 pb-6">

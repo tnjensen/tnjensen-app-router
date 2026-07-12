@@ -1,0 +1,47 @@
+name: Deploy Next.js to VPS
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 22
+          script: |
+            # 1. Opprett mappen hvis den ikke eksisterer, eller hent nyeste kode fra tnjensen-app-router
+            if [ ! -d "/var/www/min-nextjs-app" ]; then
+              sudo mkdir -p /var/www/min-nextjs-app
+              sudo chown -R $USER:$USER /var/www/min-nextjs-app
+              git clone https://github.com{{ github.repository }}.git /var/www/min-nextjs-app
+              cd /var/www/min-nextjs-app
+            else
+              cd /var/www/min-nextjs-app
+              git pull origin main
+            fi
+
+            # 2. Installer avhengigheter og bygg standalone-versjonen
+            npm install
+            npm run build
+
+            # 3. Kopier statiske filer inn i standalone-mappen (nødvendig for Next.js standalone)
+            cp -r .next/static .next/standalone/.next/
+            cp -r public .next/standalone/
+
+            # 4. Start eller start på nytt i PM2
+            pm2 describe nextjs-standalone > /dev/null
+            if [ $? -eq 0 ]; then
+              PORT=3000 pm2 restart nextjs-standalone --update-env
+            else
+              PORT=3000 pm2 start .next/standalone/server.js --name "nextjs-standalone"
+            fi
+            pm2 save
