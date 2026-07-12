@@ -1,5 +1,4 @@
 import ContactForm from "@/components/ContactForm";
-/* import Contacts from "@/components/Contacts"; */
 import { FaEnvelope } from "react-icons/fa";
 import { FaPerson } from "react-icons/fa6";
 
