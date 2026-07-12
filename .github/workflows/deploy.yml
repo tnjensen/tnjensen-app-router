@@ -18,14 +18,14 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
           script: |
-            # 1. Opprett mappen hvis den ikke eksisterer, eller hent nyeste kode fra tnjensen-app-router
-            if [ ! -d "/var/www/tnjensen-app-router" ]; then
-              sudo mkdir -p /var/www/tnjensen-app-router
-              sudo chown -R tnjensen:tnjensen /var/www/tnjensen-app-router
-              git clone https://github.com{{ github.repository }}.git /var/www/min-nextjs-app
-              cd /var/www/tnjensen-app-router
+            # 1. Naviger til tnjensen.com mappen eller klon den hvis den er tom
+            if [ ! -d "/var/www/tnjensen.com" ] || [ -z "$(ls -A /var/www/tnjensen.com)" ]; then
+              sudo mkdir -p /var/www/tnjensen.com
+              sudo chown -R $USER:$USER /var/www/tnjensen.com
+              git clone https://github.com{{ github.repository }}.git /var/www/tnjensen.com
+              cd /var/www/tnjensen.com
             else
-              cd /var/www/tnjensen-app-router
+              cd /var/www/tnjensen.com
               git pull origin main
             fi
 
@@ -33,7 +33,7 @@ jobs:
             npm install
             npm run build
 
-            # 3. Kopier statiske filer inn i standalone-mappen (nødvendig for Next.js standalone)
+            # 3. Kopier statiske filer inn i standalone-mappen
             cp -r .next/static .next/standalone/.next/
             cp -r public .next/standalone/
 
