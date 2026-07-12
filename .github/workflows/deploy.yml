@@ -18,24 +18,24 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
           script: |
-            # 1. Gå til riktig mappe eller klon på nytt hvis den er tom
-            if [ ! -d "/var/www/tnjensen.com" ] || [ -z "$(ls -A /var/www/tnjensen.com)" ]; then
-              git clone https://github.com/tnjensen/tnjensen-app-router
+            # 1. Gå til mappen eller klon det rene repositoriet hvis det mangler
+            if [ ! -d "/var/www/tnjensen.com" ] || [ -z "$(ls -A /var/www/tnjensen.com 2>/dev/null)" ]; then
+              git clone https://github.com/tnjensen/tnjensen-app-router /var/www/tnjensen.com
               cd /var/www/tnjensen.com
             else
               cd /var/www/tnjensen.com
               git pull origin main
             fi
 
-            # 2. Installer avhengigheter og bygg
+            # 2. Installer avhengigheter og bygg standalone-versjonen
             npm install
             npm run build
 
-            # 3. Kopier statiske filer til standalone-mappen
+            # 3. Kopier statiske filer til standalone-strukturen
             cp -r /var/www/tnjensen.com /var/www/tnjensen.com
             cp -r /var/www/tnjensen.com /var/www/tnjensen.com
 
-            # 4. Slett gammel PM2-historikk og start helt på nytt
+            # 4. Start eller start på nytt i PM2
             pm2 delete nextjs-standalone || true
             
             cd /var/www/tnjensen.com
