@@ -29,7 +29,7 @@ jobs:
             --exclude='.github*' \
             --exclude='node_modules' \
             --exclude='.next' \
-            ./ ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }}:/var/www/://tnjensen.com
+            ./ ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }}:/var/www/tnjensen.com
 
       # 4. Logger inn på VPS via SSH for å bygge og restarte med PM2
       - name: SSH Remote Commands for PM2
