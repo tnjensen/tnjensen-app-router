@@ -45,5 +45,7 @@ jobs:
             npm install --legacy-peer-deps
             npm run build
 
-            pm2 reload "tnjensen-app" || pm2 start npm --name "tnjensen-app" -- start
+            export PORT=3000
+
+            pm2 reload tnjensen-app || pm2 start npm --name "tnjensen-app" -- start
             pm2 save
