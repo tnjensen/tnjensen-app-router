@@ -5,7 +5,7 @@ import Loading from './loading';
 
 export default async function Projects(){
 
-    const response = await fetch('https://noroff.tnjensen.com/portfolio/wp-json/wp/v2/posts?categories=3&_embed&filter[orderby]=date&order=asc')
+    const response = await fetch('https://noroff.tnjensen.com/portfolio/wp-json/wp/v2/posts?categories=3&_embed&filter[orderby]=date&order=desc')
     const data = await response.json()
     console.log(data)
    
@@ -19,10 +19,4 @@ export default async function Projects(){
                 {item._embedded['wp:featuredmedia'] && <img src={item._embedded['wp:featuredmedia'][0].source_url} alt={item._embedded['wp:featuredmedia'][0].alt_text} className="mb-3" /> }
                 <span dangerouslySetInnerHTML={{__html: item.content.rendered}}></span>
                 <hr className="mt-2"/>
-                <Link href={item.meta._links_to} className="hover:bg-background hover:text-black hover:underline mt-2">Visit site</Link>
-                </div>
-            ))}
-            </Suspense>
-        </div>
-    )
-}
+                <Link href={item.meta._links_to} className="hover:bg-background hover:text-black hover:underline mt-2">
