@@ -3,6 +3,7 @@ import { FaEnvelope } from "react-icons/fa";
 import { FaPerson } from "react-icons/fa6";
 
 export default function Contact(){
+    
     return(
         <div className="py-4 mx-auto">
                 <h1 className="text-center">Contact</h1>
