@@ -35,7 +35,7 @@
   margin: 0;
 }
 
-.link{
+.link {
   display: flex;
   flex-direction: row;
   justify-content: left;
@@ -285,4 +285,6 @@
   }
 
   .closeButton:hover {
-    backgroun
+    background: #222;
+  }
+}
