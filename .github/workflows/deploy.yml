@@ -1,4 +1,4 @@
-name: Deploy Next.js with rsync (single host)
+name: Deploy Next.js (self-hosted)
 
 on:
   push:
@@ -12,20 +12,36 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Deploy files via rsync (SSH uses SERVER_HOST)
+      - name: Create deploy archive
         shell: bash
         run: |
-          rsync -avzr --delete \
-            --exclude='.git*' \
-            --exclude='.github*' \
+          tar czf deploy.tar.gz \
             --exclude='node_modules' \
             --exclude='.next' \
-            -e "ssh -i $HOME/.ssh/id_ed25519 -o StrictHostKeyChecking=no" \
-            ./ ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:${{ secrets.DEPLOY_PATH }}/
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='deploy.tar.gz' \
+            .
 
-      - name: SSH Remote Commands for PM2 (SSH uses SERVER_HOST)
+      - name: Upload and deploy
+        shell: bash
+        run: |
+          scp -i $HOME/.ssh/id_ed25519 -o StrictHostKeyChecking=no \
+            deploy.tar.gz \
+            ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:/tmp/
+
+          ssh -i $HOME/.ssh/id_ed25519 -o StrictHostKeyChecking=no \
+            ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} \
+            "cd ${{ secrets.DEPLOY_PATH }} && rm -rf * && tar xzf /tmp/deploy.tar.gz && rm /tmp/deploy.tar.gz"
+
+      - name: Build and start PM2
         shell: bash
         run: |
           ssh -i $HOME/.ssh/id_ed25519 -o StrictHostKeyChecking=no \
             ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} \
-            "cd ${{ secrets.DEPLOY_PATH }} && npm install --legacy-peer-deps && npm run build && pm2 reload tnjensen-app || pm2 start npm --name tnjensen-app -- start && pm2 save"
+            "cd ${{ secrets.DEPLOY_PATH }} && npm install --legacy-peer-deps && npm run build && (pm2 reload tnjensen-app || pm2 start npm --name tnjensen-app -- start) && pm2 save"
+
+      - name: Cleanup
+        if: always()
+        shell: bash
+        run: rm -f deploy.tar.gz
