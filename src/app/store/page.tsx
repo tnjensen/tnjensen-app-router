@@ -3,6 +3,7 @@
 import { useState } from "react";
 import styles from "./page.module.css";
 import Link from "next/link";
+import { FaArrowCircleLeft } from "react-icons/fa";
 
 export default function Home() {
 
@@ -11,6 +12,10 @@ export default function Home() {
   return (
     <div className={styles.page}>
       <main className={styles.main}>
+        <div>
+        <FaArrowCircleLeft />
+        <Link href={"/projects"}>Go back</Link>  
+        </div>
         <div className={styles.hero}>
           <h1>NextCove</h1>
           <p className={styles.tagline}>Modern Next.js-application</p>
