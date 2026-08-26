@@ -5,6 +5,7 @@ import Loading from './loading';
 export const dynamic = 'force-dynamic';
 
 export default async function Projects() {
+ 
     const response = await fetch('https://noroff.tnjensen.com/portfolio/wp-json/wp/v2/posts?categories=6,9&_embed&filter[orderby]=date&order=asc')
     const data = await response.json()
 
