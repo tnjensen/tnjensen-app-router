@@ -14,7 +14,7 @@ export default function Home() {
       <main className={styles.main}>
         <div>
         <FaArrowCircleLeft />
-        <Link href={"/projects"}>Go back</Link>  
+        <span><Link href={"/projects"}>Go back</Link></span>  
         </div>
         <div className={styles.hero}>
           <h1>NextCove</h1>
