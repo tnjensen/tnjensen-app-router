@@ -1,4 +1,5 @@
 import Link from "next/link";
+import PurchaseForm from "@/components/PurchaseForm";
 import { FaArrowCircleLeft, FaGithub, FaCheckCircle, FaTerminal } from "react-icons/fa";
 
 export const metadata = {
@@ -21,14 +22,17 @@ export default function Success() {
       <div className="flex items-start gap-2 rounded-xl border border-green-200 bg-green-50 p-4 my-6">
         <FaCheckCircle className="text-green-600 mt-1 shrink-0 text-xl" />
         <p className="text-green-900">
-          Thank you for your purchase! To keep this simple and secure, you will be
-          given access by inviting your GitHub username to the private repository.{" "}
-          <Link href={"/contact"} className="underline">
-            Send your GitHub username via the contact page
-          </Link>
-          , and once your payment is confirmed you will receive an invitation.
+          Thank you for your purchase! To keep this simple and secure, you get
+          access by inviting your GitHub username to the private repository.
+          Fill in your details below so you can be invited after your payment is
+          confirmed.
         </p>
       </div>
+
+      <section className="my-8 rounded-2xl border border-gray-200 p-6">
+        <h2 className="text-xl font-semibold mb-4">Request GitHub access</h2>
+        <PurchaseForm />
+      </section>
 
       <section className="my-8">
         <h2 className="text-2xl font-semibold flex items-center gap-2">
@@ -88,12 +92,6 @@ echo 'export default { output: "export", basePath: "/my-app" };' > next.config.m
           <strong>your domain</strong> under <code>/my-app</code>.
         </p>
       </section>
-
-      <div className="text-center my-8">
-        <Link href={"/contact"} className="inline-block rounded-full bg-[var(--header)] text-white px-8 py-3 font-semibold">
-          Contact me for access
-        </Link>
-      </div>
     </div>
   );
 }
