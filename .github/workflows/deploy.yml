@@ -26,6 +26,7 @@ jobs:
           rsync -avzr --delete \
             --exclude='.git*' \
             --exclude='.github*' \
+            --exclude='.env' \
             --exclude='node_modules' \
             --exclude='.next' \
             -e "ssh -p 22" \
