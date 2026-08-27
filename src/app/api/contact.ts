@@ -12,14 +12,14 @@ const contactSchema = z.object({
     turnstileToken: z.string().min(1, 'Sikkerhetsverifisering kreves'),
 });
 
-// Oppretter en gjenbrukbar Nodemailer transportør
+// Oppretter en gjenbrukbar Nodemailer transportør (Gmail med app-password)
 const transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST,
+    host: 'smtp.gmail.com',
     port: 465,
     secure: true,
     auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
+        user: process.env.GMAIL_ADDRESS,
+        pass: process.env.GMAIL_APP_PASSWORD,
     },
     family: 4,
 } as SMTPTransport.Options);
@@ -74,8 +74,8 @@ export async function submitContactForm(prevState: any, formData: FormData) {
     // 3. Send e-posten med Nodemailer
     try {
         await transporter.sendMail({
-            from: `"${name}" <${process.env.SMTP_USER}>`, // Sendes fra din SMTP-bruker for å unngå spamfilter
-            to: process.env.CONTACT_RECEIVER,
+            from: `"${name}" <${process.env.GMAIL_ADDRESS}>`, // Sendes fra Gmail for å unngå spamfilter
+            to: process.env.PURCHASE_RECEIVER,
             replyTo: email, // Gjør at du svarer direkte til kunden når du trykker "Svar" i mailboksen din
             subject: `Ny henvendelse fra kontaktskjema: ${name}`,
             text: `Navn: ${name}\nE-post: ${email}\n\nMelding:\n${message}`,
