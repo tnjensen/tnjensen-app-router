@@ -3,10 +3,11 @@
 import { useState } from "react";
 import styles from "./page.module.css";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { FaArrowCircleLeft } from "react-icons/fa";
 
 export default function Home() {
-
+  const router = useRouter();
   const [showPayment, setShowPayment] = useState(false);
 
   return (
@@ -25,10 +26,9 @@ export default function Home() {
           <div className={styles.productInfo}>
             <h2>Get started</h2>
             <p>
-              Upon payment, send me an email from the <Link href={"/contact"}>Contact</Link> page, 
-              with your github username, and I'll give you access to the source code by inviting you as a collaborator on the github project. 
-              You will have read access, and you'll want to clone the project and create your own repo on your account.
-              Follow the instructions in the readme file, and you should be good to go. 
+              Buy the NextCove source code and run it on your own hosting. After
+              payment you will receive access to the private repository and are
+              ready to clone and deploy.
             </p>
           </div>
           <div className={styles.productInfo}>
@@ -39,7 +39,8 @@ export default function Home() {
             </p>
             <ul className={styles.features}>
               <li>Full source-code (Next.js + TypeScript)</li>
-              <li>Documentation inkluded</li>
+              <li>Documentation included</li>
+              <li>Multiple Next.js apps on one domain</li>
             </ul>
           </div>
 
@@ -70,10 +71,13 @@ export default function Home() {
               <p className={styles.vippsAmount}>Amount: <strong>99 kr</strong></p>
               <p className={styles.vippsNote}>Label the payment: <strong>NextCove</strong></p>
               <p className={styles.vippsNote2}>
-                After payment, send receipt by email to gain access.
+                After you have paid, click the button below to get started.
               </p>
-              <button className={styles.closeButton} onClick={() => setShowPayment(false)}>
-                Close
+              <button
+                className={styles.continueButton}
+                onClick={() => router.push("/store/success")}
+              >
+                I have paid via Vipps
               </button>
             </div>
           </div>
