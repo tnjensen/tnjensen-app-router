@@ -12,10 +12,12 @@ export default function Home() {
 
   return (
     <div className={styles.page}>
-      <main className={styles.main}>
-        <div className={styles.link}>
+      <div className={styles.link}>
         <FaArrowCircleLeft />
-        <Link href={"/projects"}>Go back</Link>  
+        <Link href={"/projects"}>Go back</Link>
+      </div>
+      <main className={styles.main}>
+        <div className={styles.link}>  
         </div>
         <div className={styles.hero}>
           <h1>NextCove</h1>
