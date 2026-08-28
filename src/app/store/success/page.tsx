@@ -11,7 +11,7 @@ export default function Success() {
     <div className="py-4 px-4 md:px-8 max-w-4xl mx-auto">
       <div className="flex items-center gap-2 my-4">
         <FaArrowCircleLeft />
-        <Link href={"/store"}>Back to store</Link>
+        <Link href={"/store"}>Go back</Link>
       </div>
 
       <div className="text-center my-8">
