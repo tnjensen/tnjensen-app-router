@@ -51,5 +51,5 @@ jobs:
 
             export PORT=3001
 
-            pm2 reload tnjensen-app || pm2 start npm --name "tnjensen-app" -- start
+            pm2 reload tnjensen || pm2 start npm --name "tnjensen" -- start
             pm2 save
